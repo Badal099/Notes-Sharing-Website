@@ -1,0 +1,77 @@
+{% extends 'userbase.html' %}{% block body %} {% load static %} {% if error %}
+<script>
+    alert("Profile Update Successfully");
+    window.location = ('{% url "profile" %}');
+</script>
+{% endif %}
+
+<div class="container mt-5">
+    <h2 class="text-center text-danger mb-5" style="font-family: 'Monotype Corsiva';">EDIT PROFILE</h2>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-sm-6">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" value="{{data.user.first_name}}" name="firstname">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" value="{{data.user.last_name}}" name="lastname">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-md-12">
+                        <label>Email ID</label>
+                        <input type="email" class="form-control" value="{{data.user.username}}" readonly>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-md-12">
+                        <label>Contact</label>
+                        <input type="text" class="form-control" value="{{data.contact}}" name="contact">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-md-6">
+                        <label>Branch</label>
+                        <select class="form-select" name="branch">
+                            <option value="nothing">---Select Branch---</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Mechanical">Mechanical</option>
+                            <option value="Civil">Civil</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6 mt-4">
+                        <input type="text" class="form-control" value="{{data.branch}}" readonly>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-md-6">
+                        <label>Role</label>
+                        <select class="form-select" name="role">
+                            <option value="nothing">---Select Role---</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Student">Student</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6 mt-4">
+                        <input type="text" class="form-control" value="{{data.role}}" readonly>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary mt-4" value="Update">
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <img src="{% static 'images/editprofile.png' %}" style="width: 80%; height: 80%; margin-left: 60px;">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

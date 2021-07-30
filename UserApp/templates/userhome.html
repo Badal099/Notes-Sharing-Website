@@ -1,0 +1,18 @@
+{% extends 'userbase.html' %}{% block body %} {% load static %}
+
+<style>
+    .image {
+        width: 100%;
+        height: 470px;
+        background-image: url(../static/images/home.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<div class="image">
+    <div class="transparentbox">
+        <p>Welcome {{request.user.first_name}} Ji<br>Welcome to Notes Sharing Site</p>
+    </div>
+</div>
+
+{% endblock %}

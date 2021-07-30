@@ -1,0 +1,54 @@
+{% extends 'userbase.html' %}{% block body %} {% load static %} {% ifequal error "no" %}
+<script>
+    alert("Upload Notes Successfully");
+    window.location = ('{% url "viewmynotes" %}');
+</script>
+{% endifequal %} {% ifequal error "yes" %}
+<script>
+    alert("Something went wrong, Please try again...");
+</script>
+{% endifequal %}
+
+<div class="container mt-5">
+    <div class="row" style="background-color: lightgray;">
+        <div class="col-sm-6 mt-4 mb-4">
+            <h2 class="text-center text-danger" style="font-family: 'Monotype Corsiva';">UPLOAD NOTES</h2>
+            <hr>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Branch</label>
+                <select class="form-select mb-3" name="branch" required>
+                    <option value="nothing">---Select Branch---</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label>Subject</label>
+                <input type="text" class="form-control mb-3" name="subject" placeholder="Enter Subject Name" required>
+                <label>Notes Files</label>
+                <input type="file" class="form-control mb-3" name="notesfile" required>
+                <label>File Type</label>
+                <select class="form-select mb-3" name="filetype" required>
+                    <option value="nothing">---Select File Type---</option>
+                    <option value="PDF">PDF</option>
+                    <option value="PPT">PPT</option>
+                    <option value="DOC/DOCX">DOC/DOCX</option>
+                    <option value="TXT">TXT</option>
+                    <option value="Image">Image</option>
+                    <option value="ZIP/RAR">ZIP/RAR</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label>Description</label>
+                <textarea class="form-control mb-3" name="description"></textarea>
+                <input type="submit" class="btn btn-success mt-4" value="UPLOAD">
+            </form>
+        </div>
+        <div class="col-sm-6 mt-4 mb-4">
+            <img src="{% static 'images/uploadnotes.jpg' %}" style="width: 80%; height: 80%; margin-left: 60px; margin-top: 50px;">
+        </div>
+    </div>
+</div>
+{% endblock %}

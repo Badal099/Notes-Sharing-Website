@@ -1,0 +1,37 @@
+{% extends 'base.html' %}{% block body %} {% load static %} {% ifequal error "no" %}
+<script>
+    alert("Logged In Successfully");
+    window.location = ('{% url "userhome" %}');
+</script>
+{% endifequal %} {% ifequal error "yes" %}
+<script>
+    alert("Invalid Credentials, Please try again...");
+</script>
+{% endifequal %}
+
+<div class="container mt-5">
+    <div class="row" style="background-color: lightgray;">
+        <div class="col-sm-6 mt-4 mb-4">
+            <h2 class="text-center">NEW CUSTOMERS</h2>
+            <hr>
+            <center>
+                <p>By Creating an Account with our Website, You will be able to move through the notes uploading, downloading process and more...</p>
+                <a href="{% url 'signup' %}" class="btn btn-danger text-white mt-4">CREATE AN ACCOUNT</a>
+            </center>
+        </div>
+        <div class="col-sm-6 mt-4 mb-4">
+            <h2 class="text-center">USER LOGIN</h2>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <label>Email ID</label>
+                <input type="email" class="form-control mb-3" name="email" placeholder="Enter Your E-mail" required>
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter your Password" required>
+                <input type="submit" class="btn btn-danger mt-4" value="LOGIN">
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

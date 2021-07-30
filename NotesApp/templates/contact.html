@@ -1,0 +1,48 @@
+{% extends 'base.html' %}{% block body %} {% load static %}
+<style>
+    .input-group {
+        margin: 0 auto;
+        width: 500px;
+    }
+    
+    .input-Field {
+        width: 100%;
+        padding: 10px 0;
+        margin: 5px 0;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 2px solid rgb(52, 116, 236);
+        outline: none;
+        background: transparent;
+    }
+</style>
+<div style="background-color: green; height: 80px;">
+    <h3 class="text-center text-white pt-3">CONTACT US</h3>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14712.239616108187!2d75.8424626!3d22.8002441!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd8d494839162020b!2sLakshmi%20Narain%20College%20Of%20Technology!5e0!3m2!1sen!2sin!4v1623316549574!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="col-sm-6">
+            <h5 style="font-family: Monotype corsiva;"><i class="fas fa-envelope"> Email ID : </i> badalchouhan295@gmail.com</h5>
+            <h5 style="font-family: Monotype corsiva;"><i class="fas fa-phone-square"> Contact : </i> +91 8085119177</h5>
+            <div class="text-center mt-5">
+                <h4>Need Our Help</h4>
+                <form class="input-group mt-5" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="input-Field" name="name" placeholder="Enter Your Name" required>
+                    <input type="text" class="input-Field" name="phone" placeholder="Enter Your Phone Number" required>
+                    <input type="email" class="input-Field" name="email" placeholder="Enter Your E-mail" required>
+                    <input type="text" class="input-Field" name="message" placeholder="Enter Any Message" required>
+                    <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 40px;">
+                        <button type="submit" class="btn btn-outline-primary">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

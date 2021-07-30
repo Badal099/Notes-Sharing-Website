@@ -1,0 +1,33 @@
+{% extends 'adminbase.html' %}{% block body %} {% load static %} {% ifequal error "no" %}
+<script>
+    alert("Status Update Successfully");
+    window.location = ('{% url "allnotes" %}');
+</script>
+{% endifequal %} {% ifequal error "yes" %}
+<script>
+    alert("Something went wrong, Please try again...");
+</script>
+{% endifequal %}
+
+<div class="container mt-5">
+    <h1 class="text-center text-danger" style="font-family: 'Monotype Corsiva';">ASSIGN STATUS</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <form method="POST" class="col-sm-6">
+            {% csrf_token %}
+            <label style="font-weight: bold;">NOTES ID</label>
+            <input type="text" class="form-control mb-3" name="notesid" value="{{notes.id}}" readonly>
+            <label style="font-weight: bold;">STATUS</label>
+            <select class="form-select mb-3" name="status" required>
+            <option value="">---Select Status---</option>
+            <option value="Pending">Pending</option>
+            <option value="Accept">Accept</option>
+            <option value="Reject">Reject</option>
+        </select>
+            <input type="submit" class="form-control btn btn-success mt-4" value="UPDATE">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

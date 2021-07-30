@@ -1,0 +1,60 @@
+{% extends 'base.html' %}{% block body %} {% load static %} {% ifequal error "no" %}
+<script>
+    alert("SignUp Successfully");
+    window.location = ('{% url "userlogin" %}');
+</script>
+{% endifequal %} {% ifequal error "yes" %}
+<script>
+    alert("Something went wrong, Please try again...");
+</script>
+{% endifequal %}
+
+<div class="container mt-5">
+    <div class="row" style="background-color: lightgray;">
+        <div class="col-sm-6 mt-4 mb-4">
+            <h2 class="text-center">EXISTING CUSTOMER</h2>
+            <hr>
+            <center>
+                <p>By Login with our Website, You will be able to move through the notes uploading, downloading process and more...</p>
+                <a href="{% url 'userlogin' %}" class="btn btn-danger text-white mt-4">ALREADY YOU HAVE AN ACCOUNT ?</a></center>
+        </div>
+        <div class="col-sm-6 mt-4 mb-4">
+            <h2 class="text-center">REGISTER WITH US</h2>
+            <hr>
+            <p style="text-align: center;">If you have not an account with us, please register yourself...</p>
+            <form method="POST">
+                {% csrf_token %}
+                <label>First Name</label>
+                <input type="text" class="form-control mb-3" name="fname" placeholder="Enter Your First Name" required>
+                <label>Last Name</label>
+                <input type="text" class="form-control mb-3" name="lname" placeholder="Enter Your Last Name" required>
+                <label>Contact</label>
+                <input type="text" class="form-control mb-3" name="contact" placeholder="Enter Your Contact Number" required>
+                <label>Email ID</label>
+                <input type="email" class="form-control mb-3" name="email" placeholder="Enter Your E-mail" required>
+                <label>Password</label>
+                <input type="password" class="form-control mb-3" name="password" placeholder="Enter Your Password" required>
+                <label>Branch</label>
+                <select class="form-select mb-3" name="branch" required>
+                    <option value="nothing">---Select Branch---</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label>Are You ?</label>
+                <select class="form-select mb-3" name="role" required>
+                    <option value="nothing">---Select Role---</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Student">Student</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="submit" class="btn btn-danger mt-4" value="REGISTER">
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
