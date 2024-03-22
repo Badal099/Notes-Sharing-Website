@@ -1,13 +1,13 @@
-{% extends 'adminbase.html' %}{% block body %} {% load static %} {% ifequal error "no" %}
+{% extends 'adminbase.html' %}{% block body %} {% load static %} {% if error == "no" %}
 <script>
     alert("Status Update Successfully");
     window.location = ('{% url "allnotes" %}');
 </script>
-{% endifequal %} {% ifequal error "yes" %}
+{% endif %} {% if error == "yes" %}
 <script>
     alert("Something went wrong, Please try again...");
 </script>
-{% endifequal %}
+{% endif %}
 
 <div class="container mt-5">
     <h1 class="text-center text-danger" style="font-family: 'Monotype Corsiva';">ASSIGN STATUS</h1>
