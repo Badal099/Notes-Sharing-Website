@@ -1,13 +1,13 @@
-{% extends 'base.html' %}{% block body %} {% load static %} {% ifequal error "no" %}
+{% extends 'base.html' %}{% block body %} {% load static %} {% if error == "no" %}
 <script>
     alert("Logged In Successfully");
     window.location = ('{% url "userhome" %}');
 </script>
-{% endifequal %} {% ifequal error "yes" %}
+{% endif %} {% if error == "yes" %}
 <script>
     alert("Invalid Credentials, Please try again...");
 </script>
-{% endifequal %}
+{% endif %}
 
 <div class="container mt-5">
     <div class="row" style="background-color: lightgray;">
