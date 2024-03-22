@@ -1,13 +1,13 @@
-{% extends 'userbase.html' %}{% block body %} {% load static %} {% ifequal error "no" %}
+{% extends 'userbase.html' %}{% block body %} {% load static %} {% if error == "no" %}
 <script>
     alert("Upload Notes Successfully");
     window.location = ('{% url "viewmynotes" %}');
 </script>
-{% endifequal %} {% ifequal error "yes" %}
+{% endif %} {% if error == "yes" %}
 <script>
     alert("Something went wrong, Please try again...");
 </script>
-{% endifequal %}
+{% endif %}
 
 <div class="container mt-5">
     <div class="row" style="background-color: lightgray;">
